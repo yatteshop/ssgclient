@@ -1,4 +1,7 @@
-import ForProduits from '@/composants/ForProduits';
+import dynamic from 'next/dynamic';
+const ForProduits = dynamic(() => import('@/composants/ForProduits'), {
+  ssr: false,
+});
 
 export async function getStaticProps() {
   const [resProduits, resCategories] = await Promise.all([
