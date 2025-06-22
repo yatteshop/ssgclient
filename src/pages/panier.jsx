@@ -69,7 +69,7 @@ export default function Cart({ categories, suggestions }) {
   };
 
   const detailDirect = (id) => {
-    router.push(`/${id}`);
+    router.push(`detail/${id}`);
   };
 
   return (
