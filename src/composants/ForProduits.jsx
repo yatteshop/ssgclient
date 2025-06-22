@@ -5,7 +5,9 @@ import { useSearchStore, useCategoryStore } from "@/stores/Store";
 import { useModal } from "@/contextes/ModalContext";
 import Modal from "@/composants/Modal";
 
+// Fonction de normalisation sécurisée
 const normalizeText = (text) => {
+  if (!text) return "";
   return text
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
@@ -16,16 +18,15 @@ const normalizeText = (text) => {
 
 export default function ForProduits({ categories = [], produits = [] }) {
   const { showModal } = useModal();
-  const { searchQuery } = useSearchStore();
-  const { selectedCategory } = useCategoryStore();
+  const { searchQuery = "" } = useSearchStore(); // fallback ""
+  const { selectedCategory = null } = useCategoryStore(); // fallback null
 
-  // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [pageSize] = useState(12);
 
   useEffect(() => {
-    if (produits.length) {
+    if (produits && produits.length) {
       setTotalPages(Math.ceil(produits.length / pageSize));
     }
   }, [produits, pageSize]);
@@ -43,7 +44,7 @@ export default function ForProduits({ categories = [], produits = [] }) {
   });
 
   const normalizedSearch = normalizeText(searchQuery);
-  const searchTerms = normalizedSearch.split(" ");
+  const searchTerms = normalizedSearch.split(" ").filter(Boolean);
 
   const filteredData = produitsAvecCategorie
     .filter((item) => {
@@ -56,11 +57,9 @@ export default function ForProduits({ categories = [], produits = [] }) {
       const categoryMatch = searchTerms.every((term) =>
         normalizeText(item.categoryName).includes(term)
       );
-      const descriptionMatch = item.description
-        ? searchTerms.every((term) =>
-            normalizeText(item.description).includes(term)
-          )
-        : false;
+      const descriptionMatch = searchTerms.every((term) =>
+        normalizeText(item.description || "").includes(term)
+      );
 
       return matchesCategory && (nameMatch || categoryMatch || descriptionMatch);
     })
@@ -103,21 +102,18 @@ export default function ForProduits({ categories = [], produits = [] }) {
                 const isEllipsis = prevPage && page - prevPage > 1;
 
                 return (
-                  <>
+                  <React.Fragment key={page}>
                     {isEllipsis && (
                       <li className="page-item disabled">
                         <span className="page-link">...</span>
                       </li>
                     )}
-                    <li
-                      key={page}
-                      className={`page-item ${currentPage === page ? "active" : ""}`}
-                    >
+                    <li className={`page-item ${currentPage === page ? "active" : ""}`}>
                       <button className="page-link" onClick={() => handlePageChange(page)}>
                         {page}
                       </button>
                     </li>
-                  </>
+                  </React.Fragment>
                 );
               })}
 
