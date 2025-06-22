@@ -5,7 +5,6 @@ import { useSearchStore, useCategoryStore } from "@/stores/Store";
 import { useModal } from "@/contextes/ModalContext";
 import Modal from "@/composants/Modal";
 
-// Fonction de normalisation sécurisée
 const normalizeText = (text) => {
   if (!text) return "";
   return text
@@ -18,15 +17,15 @@ const normalizeText = (text) => {
 
 export default function ForProduits({ categories = [], produits = [] }) {
   const { showModal } = useModal();
-  const { searchQuery = "" } = useSearchStore(); // fallback ""
-  const { selectedCategory = null } = useCategoryStore(); // fallback null
+  const { searchQuery = "" } = useSearchStore(); // 🛡️ fallback vide
+  const { selectedCategory = null } = useCategoryStore(); // 🛡️ fallback null
 
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [pageSize] = useState(12);
 
   useEffect(() => {
-    if (produits && produits.length) {
+    if (produits?.length) {
       setTotalPages(Math.ceil(produits.length / pageSize));
     }
   }, [produits, pageSize]);
