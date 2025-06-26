@@ -5,7 +5,7 @@ export default function BanArt() {
   const router = useRouter()
   
   const diriger = ()=>{
-    Router.push("/produits")
+    router.push("/produits")
   }
   
   return(

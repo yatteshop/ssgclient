@@ -2,7 +2,6 @@ import dynamic from "next/dynamic"
 const Menu = dynamic(() => import('@/composants/Menu'), { ssr: false })
 
 import DecathlonBanner from "@/composants/DecathlonBanner";
-//import Menu from "@/composants/Menu";
 import AccueilSlide from "@/composants/AccueilSlide";
 import Categorie from "@/composants/Categorie";
 import BanArticle from "@/composants/BanArticle";

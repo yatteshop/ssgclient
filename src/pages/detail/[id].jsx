@@ -22,7 +22,7 @@ export default function Detail({ produitId, produit, categories }) {
   const { autentifier } = useAuth();
   const { showModal, setShowModal } = useModal();
   const [notifications, setNotifications] = useState([]);
-  const [cat, setCat] = useState(categories); // ✅ cat vient des props
+  const [cat, setCat] = useState(categories);
   const [showMenu, setShowMenu] = useState(false);
   const [show, setShow] = useState(false);
 

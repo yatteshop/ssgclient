@@ -23,11 +23,11 @@ export async function getStaticProps() {
       produits,
       categories,
     },
-    revalidate: 3600, 
+    //revalidate: 3600, 
   };
 }
 
-export default function Home({ produits, categories }) {
+export default function Donnees({ produits, categories }) {
   return (
     <>
       <SixOffre produits={produits} />

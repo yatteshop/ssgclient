@@ -37,7 +37,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
     <Head>
-      <link rel="icon" href="/yatte.png" type="image/png" />
+      <link rel="icon" href="/monlogo.png" type="image/png" />
     </Head>
 
     <CartProvider>
