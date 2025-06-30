@@ -31,6 +31,9 @@ import { AuthProvider } from "@/contextes/AuthContext"
 import { CartProvider } from "@/contextes/CartContext"
 import { OrderModalProvider } from "@/contextes/OrderModalContext"
 import Head from 'next/head'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+
 
 
 export default function App({ Component, pageProps }) {
@@ -45,6 +48,19 @@ export default function App({ Component, pageProps }) {
     <AuthProvider>
     <OrderModalProvider>
       <Component {...pageProps} />
+      <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                style={{ zIndex: 999999999 }}
+              />
     </OrderModalProvider>
     </AuthProvider>
     </ModalProvider>

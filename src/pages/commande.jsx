@@ -150,12 +150,14 @@ export default function Order() {
     }
   };
 
+/*
+
   if (panier.length === 0) {
     if (typeof window !== "undefined") {
       router.replace("/client");
     }
     return null;
-  }
+  }*/
 
   return (
     <div className="Order">

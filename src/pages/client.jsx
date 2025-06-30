@@ -7,7 +7,6 @@ import {
   ShoppingCart,
   User,
   Search,
-  BookOpen,
   MoveLeft,
   AlignJustify,
 } from "lucide-react";
@@ -16,7 +15,33 @@ import { useCart } from "@/contextes/CartContext";
 import { useAuth } from "@/contextes/AuthContext";
 
 
-// Fonction pour tronquer le texte après "garantie 12 mois"
+function lepoint(amount) {
+  return amount.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
+
+
+function formatDate(dateString) {
+  const d = new Date(dateString);
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
+function datelivraison() {
+  const today = new Date();
+  const livraison = new Date(today);
+  livraison.setDate(today.getDate() + 1);
+  while (livraison.getDay() === 6 || livraison.getDay() === 0) {
+    livraison.setDate(livraison.getDate() + 1);
+  }
+  return livraison.toLocaleDateString("fr-FR", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+  });
+}
+
 const truncateAfterGarantie = (text) => {
   const keyword = "garantie 12 mois";
   const idx = text.toLowerCase().indexOf(keyword);
@@ -24,7 +49,6 @@ const truncateAfterGarantie = (text) => {
   return text.slice(0, idx + keyword.length) + "...";
 };
 
-// Fonction pour obtenir le label du statut
 const getStatusLabel = (status) => {
   switch (status) {
     case "P":
@@ -39,6 +63,8 @@ const getStatusLabel = (status) => {
 };
 
 export default function Client() {
+  const [showHistory, setShowHistory] = useState(false);
+
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
   const [token, setToken] = useState(null);
@@ -48,17 +74,13 @@ export default function Client() {
   const { dispatch } = useCart();
   const { setAutentifier } = useAuth();
 
-  // Chargement initial du token et redirection
   useEffect(() => {
     const t = Cookies.get("token");
     setToken(t || null);
     setMounted(true);
-    if (!t) {
-      router.replace("/produits");
-    }
+    if (!t) router.replace("/produits");
   }, []);
 
-  // Récupération des données utilisateur, commandes et articles
   useEffect(() => {
     if (!token) return;
 
@@ -66,24 +88,18 @@ export default function Client() {
       try {
         const headers = { Authorization: `Token ${token}` };
 
-        // Récupération utilisateur
-        const userRes = await fetch("https://yatteshop.pythonanywhere.com/api/auth/user/", { headers });
-        if (userRes.ok) {
-          const userData = await userRes.json();
-          setUser(userData);
-        }
+        const userRes = await fetch("https://yatteshop.pythonanywhere.com/api/auth/user/", { headers  });
+        if (userRes.ok) setUser(await userRes.json());
 
-        // Récupération commandes
         const orderRes = await fetch("https://yatteshop.pythonanywhere.com/api/shop/orders/", { headers });
         const orderData = orderRes.ok ? await orderRes.json() : [];
         setOrders(orderData);
 
-        // Récupération items
         const itemsRes = await fetch("https://yatteshop.pythonanywhere.com/api/shop/order-items/", { headers });
         if (itemsRes.ok) {
           const itemsData = await itemsRes.json();
           const grouped = {};
-          itemsData.forEach((item) => {
+          itemsData.forEach(item => {
             const orderId = item.order;
             if (!grouped[orderId]) grouped[orderId] = [];
             grouped[orderId].push(item);
@@ -98,7 +114,6 @@ export default function Client() {
     fetchData();
   }, [token]);
 
-  // Déconnexion utilisateur
   const deconnexion = () => {
     Cookies.remove("token");
     Cookies.remove("autentifier");
@@ -107,8 +122,9 @@ export default function Client() {
     router.push("/");
   };
 
-  // Attendre que ce soit monté côté client
   if (!mounted) return null;
+
+  const currentOrder = [...orders].sort((a, b) => new Date(b.created_at) - new Date(a.created_at))[0];
 
   return (
     <div className="ClientOrder">
@@ -134,86 +150,136 @@ export default function Client() {
           Bonjour, <span>{user.last_name}</span>&nbsp;
           <span>{user.first_name}</span><br />
           <p>{user.email}</p>
+          <button onClick={deconnexion}>
+            se déconnecter
+          </button>
         </div>
       )}
 
-      {/* Historique */}
+      {/* Dernière commande */}
+      { orders.length > 1 ?  <div>
       <div className="compteYatte">
         <span>votre compte yatte</span>
-        <label htmlFor="toggle-orders" className="toggleHistorique">Historique</label>
+
       </div>
 
-      <input type="checkbox" id="toggle-orders" hidden />
-      <div className="contentCompte2">
-        {orders.length === 0 ? (
-          <div className="clientWrapper">
-            <div className="clientTitle">Vos commandes</div>
-            <div className="clientNotif">
-              <BookOpen className="BookOpen" />
-              <p>vous n'avez pas encore de commande</p>
+      <div className="HeaderOrderEm">
+        <MoveLeft className="MoveClEma" onClick={()=>router.push("/produits")} />
+        <p>Détails de la commande</p>
+      </div>
+
+      <div className="InfoEm">
+        {!currentOrder ? (
+          <p>Vous n'avez pas de commande en cours.</p>
+        ) : (
+          <div>
+            <div className="orderEma">
+              <div><strong>Commande n° {currentOrder.id}</strong></div>
+              <p> {itemsByOrder[currentOrder.id]?.length || 0} article</p>
+            <p>Effectuée le {formatDate(currentOrder.created_at)}</p>
+
+            <p>Total : {lepoint(currentOrder.total_price)} FCFA</p>
+            </div>
+            
+            <div className="articleEma">Articles dans votre commande</div>
+            <div className="produitsCommande">
+              <div className="orderEmaT">
+              <strong className="statusEma"> {getStatusLabel(currentOrder.status)}</strong>
+              <p>Livraison prévue : {datelivraison()}</p>
+              </div>
+              {itemsByOrder[currentOrder.id]?.map((item) => (
+                <div key={item.id} className="produitCommandema">
+                  <img src={item.product_image || "/placeholder.jpg"} alt={item.product?.name || "Produit"} className="imgCommandeEma" />
+                  <div className="texteProduit">
+                    <p>{truncateAfterGarantie(item.product_description || "Pas de description")}</p>
+                    <p>Quantité : {item.quantity}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div>
+              <div className="buyTema">
+                paiement
+              </div>
+              {itemsByOrder[currentOrder.id]?.map((item, index) => (
+                <div key={index} className="buyEm">
+                  <div className="buyEmA">
+                  <div>Mode de paiement</div>
+                  <p>Payer cash à la livraison</p>
+                  </div>
+                  <div className="buyEmb">
+                  <div>Détails du paiement</div>
+                  <p>Sous-total: {lepoint(item.product_price)} FCFA</p>
+                  <p>Frais de livraison: {lepoint(item.product_prix_livraison)} FCFA</p>
+                  <p className="cmdEMA">Total : {lepoint(currentOrder.total_price)} FCFA</p>
+                </div>
+                </div>
+              ))}
+            </div>
+            <div className="buyTema">
+              livraison
+            </div>
+            <div className="buyEm">
+              <div className="buyEmA">
+              <div>Méthode de livraison</div>
+              <p>Livraison à domicile</p>
+              </div>
+              <div className="buyEmb">
+              <div>Détails d'expédition</div>
+              <p>Livraison à domicile. Expédié par YATTE</p>
+              </div>
             </div>
           </div>
-        ) : (
-          <>
-            <div className="clientTitle">Vos commandes</div>
-            {orders.map((order) => (
-              <div key={order.id} className="orderCard">
-                <div className="clientHeader" style={{ fontSize: "0.75rem" }}>
-                  <p>Commande n°{order.id}</p>
-                  <p><span>Total :</span> {order.total_price.toLocaleString()} FCFA</p>
-                </div>
-                <OrderItems items={itemsByOrder[order.id] || []} />
-                <p className="clientLabel">
-                  <span>Statut de la commande :</span> {getStatusLabel(order.status)}
-                </p>
-              </div>
-            ))}
-          </>
         )}
       </div>
 
-      {/* Boutons */}
-      <div className="wrapperclientBTN">
-        <div className="clientBTN" onClick={() => router.push("/produits")}>
-          <MoveLeft className="MoveLeft" />
-          <p>continuer votre shopping</p>
-        </div>
-      </div>
+      {/* Historique commandes */}
+      <div className="HistoriqueCommandes">
+        {orders.length > 1 ? <div className="hysto">
+          <MoveLeft className="MoveClEma" onClick={()=>router.push("/produits")} />
+          <p className="toggleHistorique" onClick={() => setShowHistory(!showHistory)}>
+          {showHistory ? "Masquer l'historique" : "Voir l'historique complet"}
+          </p>
+        </div> : ""}
+        
+        {showHistory && (<div className="historiqueBloc">
+          {orders.length > 1 ? (
+            [...orders]
+              .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+              .slice(1)
+              .map((order) => (
+                <div key={order.id} className="orderEma">
+                  <p><strong>Commande n°{order.id}</strong></p>
+                  <p>Date : {new Date(order.created_at).toLocaleDateString("fr-FR", {
+                    weekday: "long", day: "numeric", month: "long", year: "numeric"
+                  })}</p>
+                  <p>Statut : {getStatusLabel(order.status)}</p>
+                  <p>Articles : {itemsByOrder[order.id]?.length || 0}</p>
+                  <p>Total : {order.total_price} FCFA</p>
 
-      <div className="btnlogout" onClick={deconnexion}>se déconnecter</div>
-    </div>
-  );
-}
-
-// --- Composant enfant ---
-function OrderItems({ items }) {
-  return (
-    <div className="itemsList">
-      {items.map((item, index) => (
-        <div
-          key={item.id}
-          className="itemCard"
-          style={{
-            borderBottom: index !== items.length - 1 ? "1px solid #e0e0e0" : "none",
-            paddingBottom: "10px",
-            marginBottom: "10px",
-          }}
-        >
-          {item.image ? (
-            <img src={item.image} alt={item.description || item.name} />
+                  <div className="produitsCommande">
+                    {itemsByOrder[order.id]?.map((item) => (
+                      <div key={item.id} className="produitCommande">
+                        <img src={item.product_image || "/placeholder.jpg"} alt={item.product?.name || "Produit"} className="imgCommandeEma" />
+                        <div className="texteProduit">
+                          <p>{truncateAfterGarantie(item.product_description || "Pas de description")}</p>
+                          <p>Quantité : {item.quantity}</p>
+                          <p>Montant : {item.product_price} FCFA</p>
+                          <p>Frais de livraison : {item.product_prix_livraison} FCFA</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))
           ) : (
-            <div className="placeholder-img">Pas d’image</div>
+            <p>Aucune commande précédente.</p>
           )}
-          <div className="itemInfo">
-            {item.description ? (
-              <p>{truncateAfterGarantie(item.description)}</p>
-            ) : (
-              <p className="no-description">Pas de description disponible</p>
-            )}
-            <p>Quantité : {item.quantity}</p>
-          </div>
         </div>
-      ))}
+        )}
+      </div>
+    </div> : ""}
     </div>
   );
 }

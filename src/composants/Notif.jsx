@@ -1,5 +1,3 @@
-
-
 export default function Notif({ message }) {
   return (
     <div className="notif">
