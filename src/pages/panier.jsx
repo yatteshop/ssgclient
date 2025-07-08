@@ -1,5 +1,5 @@
 import { useCart } from "@/contextes/CartContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 
@@ -34,7 +34,7 @@ function tronquerSansCouperMot(texte, maxLongueur = 25) {
 }
 
 export default function Cart({ categories, suggestions }) {
-  const { panier, handlePlus, handleMoins, removeItem, fetchPanier } = useCart();
+  const { panier, handlePlus, handleMoins, removeItem, fetchPanier, clearCart, mergeGuestCartWithBackend } = useCart();
   const { autentifier } = useAuth();
   const { showModal, setShowModal } = useModal();
   const { showOrderModal, setShowOrderModal } = useOrderModal();
@@ -71,7 +71,16 @@ export default function Cart({ categories, suggestions }) {
   const detailDirect = (id) => {
     router.push(`detail/${id}`);
   };
-
+  
+  const goprodut = async ()=>{
+    await clearCart()
+    router.push('/produits')
+  }
+  
+  useEffect(()=>{
+    fetchPanier()
+  },[])
+  
   return (
     <div>
       <div className="cartWrapp">
@@ -170,7 +179,7 @@ export default function Cart({ categories, suggestions }) {
             </div>
           ) : (
             <div className="shopsuite">
-              <p onClick={() => router.push("/produits")}>continuer votre shopping</p>
+              <p onClick={goprodut}>continuer votre shopping</p>
             </div>
           )}
         </div>

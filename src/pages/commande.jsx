@@ -8,6 +8,8 @@ import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 
 
+
+
 function lepoint(amount) {
   if (typeof amount !== "number" || isNaN(amount)) {
     return "0"; 
@@ -40,6 +42,7 @@ function datelivraison() {
 
 
 export default function Order() {
+  
   const router = useRouter();
   const [user, setUser] = useState(null);
   const { panier, fetchPanier, clearCart } = useCart();
@@ -142,6 +145,7 @@ export default function Order() {
       }
 
       clearCart();
+      Cookies.remove("commande_autorisee");
       toast.info("Félicitations ! Commande passée avec succès.");
       router.push("/client");
     } catch (error) {
@@ -150,14 +154,6 @@ export default function Order() {
     }
   };
 
-/*
-
-  if (panier.length === 0) {
-    if (typeof window !== "undefined") {
-      router.replace("/client");
-    }
-    return null;
-  }*/
 
   return (
     <div className="Order">
@@ -239,10 +235,13 @@ export default function Order() {
       </div>
 
       <div className="ConfirmCenter">
-        <div className="OrderConfirm" onClick={handleConfirm}>
+        {panier.length > 0 ? <div className="OrderConfirm" onClick={handleConfirm}>
           Confirmer la commande
-        </div>
+        </div> : <div className="OrderConfirm" onClick={()=>router.push("/produits")}>
+          Continuer votre shopping
+        </div>}
       </div>
     </div>
   );
 }
+

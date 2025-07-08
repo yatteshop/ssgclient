@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useEffect } from "react";
+import { createContext, useContext, useReducer, useEffect, useState} from "react";
 import Cookies from "js-cookie";
 
 const cartContext = createContext();
@@ -47,6 +47,7 @@ export const CartProvider = ({ children }) => {
   };
   
   const [panier, dispatch] = useReducer(reducer, [], initialCart)
+  const [isClearing, setIsClearing] = useState(false);
   
  
   
@@ -198,13 +199,12 @@ export const CartProvider = ({ children }) => {
     Cookies.set("guest_cart", JSON.stringify(panier), { expires: 7, path: '/' });
    }
   }, [panier]);
-
-  
   
   
   useEffect(() => {
     fetchPanier();
   }, []);
+  
   
   
   return (
@@ -219,7 +219,5 @@ export const CartProvider = ({ children }) => {
     </cartContext.Provider>
   );
 };
-
-
 
 

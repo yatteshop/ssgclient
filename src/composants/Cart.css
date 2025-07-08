@@ -120,6 +120,10 @@
   border-radius: 5px;
 }
 
+.Plus:active {
+  transform: scale(0.95);
+}
+
 .Minus {
   background: #4B0082;
   color: white;
@@ -127,6 +131,9 @@
   width: 32px;
   height: 32px;
   border-radius: 5px;
+}
+.Minus:active {
+  transform: scale(0.95);
 }
 
 .Trash {
@@ -179,6 +186,10 @@
   font-family: "Times New Roman";
 }
 
+.btnCartOrder:active {
+  transform: scale(0.95);
+}
+
 
 
 .suggestions-section {
@@ -213,6 +224,10 @@
   text-align: center;
   min-width: 50%;
   font-size: 0.79rem;
+}
+
+.suggestion-item:active {
+  transform: scale(0.97);
 }
 
 .wrapperCartOrder {

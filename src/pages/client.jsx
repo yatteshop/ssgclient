@@ -16,8 +16,12 @@ import { useAuth } from "@/contextes/AuthContext";
 
 
 function lepoint(amount) {
-  return amount.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  if (amount == null || isNaN(Number(amount))) {
+    return "0";
+  }
+  return Number(amount).toFixed(0);
 }
+
 
 
 function formatDate(dateString) {
@@ -157,7 +161,7 @@ export default function Client() {
       )}
 
       {/* Dernière commande */}
-      { orders.length > 1 ?  <div>
+      { orders.length > 0 ?  <div>
       <div className="compteYatte">
         <span>votre compte yatte</span>
 
