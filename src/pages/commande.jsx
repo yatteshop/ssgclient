@@ -147,6 +147,19 @@ export default function Order() {
       clearCart();
       Cookies.remove("commande_autorisee");
       toast.info("Félicitations ! Commande passée avec succès.");
+      // Envoi de la notification WhatsApp via CallMeBot
+const numero = "22568743002"; // ton numéro WhatsApp sans le +
+const cleAPI = "8886250"; // ta clé CallMeBot
+const messageTexte = `📦 Nouvelle commande sur YATTE 🎉
+👤 Client : ${currentUser.username}
+💰 Total : ${lepoint(total)} FCFA`;
+
+const urlWhatsApp = `https://api.callmebot.com/whatsapp.php?phone=${numero}&text=${encodeURIComponent(messageTexte)}&apikey=${cleAPI}`;
+
+fetch(urlWhatsApp)
+  .then(res => console.log("✅ Notification WhatsApp envoyée à Davy"))
+  .catch(err => console.error("❌ Erreur envoi WhatsApp :", err));
+
       router.push("/client");
     } catch (error) {
       console.error("Erreur inattendue :", error);
