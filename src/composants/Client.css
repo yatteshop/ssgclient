@@ -2,18 +2,29 @@
   background: rgba(235,235,255,0.9);
   width: 100%;
 }
+
+.wrapClientid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #4B0082;
+  padding-right: 10px;
+  box-sizing: border-box;
+}
+
 .idClient span {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  margin-bottom: 10px;
 }
 
 .idClient p {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
 }
 
 
 .idClient {
-  margin: 10px 0;
-  background: #007bff;
+  background: #4B0082;
   color: white;
   padding: 12px;
 }
@@ -242,7 +253,7 @@
 }
 
 .statusEma {
-  background: #007bff;
+  background: #4B0082;
   color: white;
   padding: 5px;
 }
@@ -335,10 +346,15 @@
   transform: scale(0.95);
 }
 
-.idClient button {
-  margin-top: 5px;
-  padding: 8px;
+.wrapClientid button {
+  padding: 9px;
   background: rgb(255,0,0);
   color: white;
-  font-weight: 900;
+  border: 0;
+  box-shadow: 1px 2px 1px black;
+  border-radius: 5px;
+}
+
+.wrapClientid button:active {
+  transform: scale(0.95);
 }

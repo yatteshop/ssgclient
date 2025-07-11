@@ -1,3 +1,5 @@
+"use client"
+
 import { useCart } from "@/contextes/CartContext";
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
@@ -6,6 +8,7 @@ import { useRouter } from "next/router";
 import Burger from "@/composants/Burger";
 import Modal from "@/composants/Modal";
 import OrderModal from "@/composants/OrderModal";
+import Footer from "@/composants/Footer";
 
 import {
   Plus, Trash2, Minus, Search, User,
@@ -77,12 +80,14 @@ export default function Cart({ categories, suggestions }) {
     router.push('/produits')
   }
   
+  const call = ()=> window.location.href = "tel:0768743002";
+  
   useEffect(()=>{
     fetchPanier()
   },[])
   
   return (
-    <div>
+    <div className="pageCartContainer">
       <div className="cartWrapp">
         <div className="detailMenu">
           <div className="DetailTitle">
@@ -172,7 +177,8 @@ export default function Cart({ categories, suggestions }) {
         <div className="CartOrder">
           {panier.length > 0 ? (
             <div className="wrapperCartOrder">
-              <Phone className="CartPhone" />
+              <Phone className="CartPhone" onClick={call} />
+            
               <div className="btnCartOrder" onClick={order}>
                 Commander ({lepoint(somme)} FCFA)
               </div>
@@ -203,10 +209,14 @@ export default function Cart({ categories, suggestions }) {
             </div>
           </div>
         )}
+        
       </div>
 
       {showModal && <Modal />}
       {showOrderModal && <OrderModal />}
+      <div className="wrapperFooter">
+        <Footer />
+      </div>
     </div>
   );
 }

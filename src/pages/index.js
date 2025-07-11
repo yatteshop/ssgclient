@@ -34,7 +34,6 @@ export async function getStaticProps() {
         produits,
         categories,
       },
-      //revalidate: 3600,
     };
   } catch (error) {
     console.error("Erreur lors de la récupération des données :", error);

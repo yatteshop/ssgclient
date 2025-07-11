@@ -1,4 +1,5 @@
 .Footer {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,7 +13,6 @@
 .YATTE {
   font-family: Georgia;
   font-size: 0.65rem;
-  font-weight: 900;
 }
 
 .yate {
@@ -20,7 +20,16 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: 0.65rem;
+  font-size: 0.67rem;
   font-weight: thin;
   font-family: Sans-Serif;
+}
+
+.yatef {
+  margin-top: 10px;
+  border-top: 1px solid white;
+  padding: 10px;
+  font-size: 0.67rem;
+  width: 100%;
+  text-align: center;
 }

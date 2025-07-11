@@ -150,10 +150,12 @@ export default function Client() {
 
       {/* Infos utilisateur */}
       {user && (
-        <div className="idClient">
-          Bonjour, <span>{user.last_name}</span>&nbsp;
-          <span>{user.first_name}</span><br />
-          <p>{user.email}</p>
+        <div className="wrapClientid">
+          <div className="idClient">
+            Bonjour, <span>{user.last_name}</span>&nbsp;
+            <span>{user.first_name}</span>
+            <p>{user.email}</p>
+          </div>
           <button onClick={deconnexion}>
             se déconnecter
           </button>
