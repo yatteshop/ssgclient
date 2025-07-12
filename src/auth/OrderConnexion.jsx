@@ -4,10 +4,13 @@ import { useAuth } from "../contextes/AuthContext";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useCart } from "../contextes/CartContext"
+import { useRouter } from "next/router"
 
 export default function Connexion({ changeModal, setChangeModal }) {
   
   const { fetchPanier, mergeGuestCartWithBackend } = useCart()
+  
+  const router = useRouter()
   
   const { showOrderModal,  setShowOrderModal } = useOrderModal()
   const { setAutentifier } = useAuth();
@@ -48,7 +51,7 @@ export default function Connexion({ changeModal, setChangeModal }) {
       setAutentifier(true);
       await mergeGuestCartWithBackend();
       setShowOrderModal(false);
-      navigate("/commande")
+      router.push("/commande")
     } catch (error) {
       setErreur(error.message);
     } finally {
