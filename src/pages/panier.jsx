@@ -185,7 +185,7 @@ export default function Cart({ categories, suggestions }) {
             </div>
           ) : (
             <div className="shopsuite">
-              <p onClick={goprodut}>continuer votre shopping</p>
+              <p onClick={goprodut}>Commencez vos achats</p>
             </div>
           )}
         </div>
