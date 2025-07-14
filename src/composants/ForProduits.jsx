@@ -33,6 +33,7 @@ export default function ForProduits({ categories = [], produits = [] }) {
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
+    window.scrollTo({ top: 0, behavior: "auto" });
   };
 
   const produitsAvecCategorie = produits.map((item) => {

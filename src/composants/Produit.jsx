@@ -6,11 +6,13 @@ import { useAuth } from "@/contextes/AuthContext";
 import Notif from "@/composants/Notif";
 import {useEffect} from "react"
 
+
 function formatAmountWithSeparators(amount) {
   return amount.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 export default function Produit({ name, price, image, id, logo, pribarrer, description, prix_livraison }) {
+  
   const [notifications, setNotifications] = useState([]);
   const { dispatch, panier, saveGuestCart } = useCart();
   const { autentifier } = useAuth(); 

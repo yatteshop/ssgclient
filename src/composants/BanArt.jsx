@@ -1,10 +1,14 @@
 import { useRouter } from "next/router"
+import { useCategoryStore } from "../stores/Store"
 
 export default function BanArt() {
+  
+  const {selectedCategory, setSelectedCategory} = useCategoryStore()
   
   const router = useRouter()
   
   const diriger = ()=>{
+    setSelectedCategory(null)
     router.push("/produits")
   }
   

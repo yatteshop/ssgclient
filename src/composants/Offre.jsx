@@ -1,10 +1,13 @@
 import {useRouter} from "next/router"
+import { useCategoryStore } from "../stores/Store"
 
 export default function Offre(){
   
   const router= useRouter()
+  const {selectedCategory, setSelectedCategory} = useCategoryStore()
   
   const diriger = ()=>{
+    setSelectedCategory(null)
     router.push( "/produits")
   }
   
