@@ -40,13 +40,36 @@ export default function App({ Component, pageProps }) {
   return (
     <>
     <Head>
-      <link rel="icon" href="/monlogo.png" type="image/png" />
-      <title>YATTE</title>
-      <meta name="description" content="Découvrez nos articles chez YATTE. Qualité, style et livraison rapide." />
-      <meta name="keywords" content="YATTE,boutique en ligne, Abidjan, Côte d'Ivoire" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <meta charSet="utf-8" />
-    </Head>
+  <title>YATTE - CÔTE D'IVOIRE</title>
+  <meta name="description" content="Découvrez nos articles chez YATTE. Qualité, style et livraison rapide." />
+  <meta name="keywords" content="YATTE, boutique en ligne, Abidjan, Côte d'Ivoire" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charSet="utf-8" />
+
+  {/* Favicon/logo dans l’onglet */}
+  <link rel="icon" href="/monlogo.png" type="image/png" />
+
+  {/* Image pour les aperçus réseaux sociaux / Google */}
+  <meta property="og:image" content="https://yatteshop.netlify.app/monlogo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  {/* Déclaration du logo dans schema.org */}
+  <script type="application/ld+json">
+    {`
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "YATTE",
+        "url": "https://yatteshop.netlify.app",
+        "logo": "https://yatteshop.netlify.app/monlogo.png"
+      }
+    `}
+  </script>
+</Head>
+
 
 
     <CartProvider>
