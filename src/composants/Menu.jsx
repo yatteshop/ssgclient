@@ -85,7 +85,7 @@ export default function Menu({categories = []}){
       <div className="MenuLeft">
         <Burger displayMenu={displayMenu} />
         <div className="title" onClick={()=>router.push("/")}>
-          yatte<div className="Basket"><ShoppingBasket style={{
+          YATTE<div className="Basket"><ShoppingBasket style={{
             width:"20px",
             height:"20px",
             color:"white",
