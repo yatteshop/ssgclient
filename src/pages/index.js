@@ -53,14 +53,17 @@ export default function Accueil({ produits, categories }) {
   return (
     <div className="Accueil">
       <Head>
-       <title>YATTE – Électroménagers à prix imbattables</title>
+        <title>YATTE – CÔTE D'IVOIRE | Électronique & Multimédia</title>
         <meta
-           name="description"
-           content="Qualité et prix imbattables sur nos électroménagers. Super Deals jusqu’à -40%. Large choix de TV dernière génération et plus encore."
+          name="description"
+          content="Découvrez tous types d’articles à prix imbattables : téléphones, télévisions, accessoires, électroménagers et plus. Livraison partout en Côte d’Ivoire."
         />
-       <meta name="robots" content="index, follow" />
-       <meta name="google-site-verification" content="HNNW2yZuf8plawr_kpuLSdi1PBeJAEkzayLcGCe4xgk" />
-        <link rel="canonical" href="https://yatteshop.netlify.app/" />
+        <meta property="og:title" content="YATTE – CÔTE D'IVOIRE" />
+        <meta
+          property="og:description"
+          content="Jusqu’à -40% sur vos produits préférés. Large choix de téléphones, TV, accessoires. Achetez malin avec YATTE."
+        />
+        <meta property="og:image" content="/images/logo.png" />
       </Head>
       
       
