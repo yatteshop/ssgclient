@@ -41,6 +41,7 @@ export default function App({ Component, pageProps }) {
     <>
     <Head>
       <link rel="icon" href="/monlogo.png" type="image/png" />
+      <meta name="google-site-verification" content="AnvoffnSvs996zZJPthWpn0rXMRMrXiecFo1BXFTsR4" />
     </Head>
 
     <CartProvider>
