@@ -16,6 +16,7 @@ import Modal from "@/composants/Modal";
 
 import { useModal } from "@/contextes/ModalContext";
 import { useEffect } from "react";
+import Head from 'next/head';
 
 export async function getStaticProps() {
   try {
@@ -51,6 +52,18 @@ export default function Accueil({ produits, categories }) {
 
   return (
     <div className="Accueil">
+      <Head>
+       <title>YATTE – Électroménagers à prix imbattables</title>
+        <meta
+           name="description"
+           content="Qualité et prix imbattables sur nos électroménagers. Super Deals jusqu’à -40%. Large choix de TV dernière génération et plus encore."
+        />
+       <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://yatteshop.netlify.app/" />
+      </Head>
+      
+      
+      
       <DecathlonBanner />
       <Menu categories={categories} />
       {showModal ? <Modal /> : null}

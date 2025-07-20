@@ -19,6 +19,8 @@ import { useModal } from "@/contextes/ModalContext";
 import { useAuth } from "@/contextes/AuthContext";
 import { useOrderModal } from "@/contextes/OrderModalContext";
 import { useCategoryStore } from "@/stores/Store";
+import Head from 'next/head';
+
 
 
 function lepoint(amount) {
@@ -88,6 +90,12 @@ export default function Cart({ categories, suggestions }) {
   
   return (
     <div className="pageCartContainer">
+      <Head>
+        <title>Votre Panier – YATTE</title>
+          <meta name="description" content="Consultez les articles ajoutés à votre panier sur YATTE. Finalisez votre achat dès maintenant avec livraison rapide à Abidjan." />
+          <link rel="canonical" href="https://yatteshop.netlify.app/panier" />
+      </Head>
+
       <div className="cartWrapp">
         <div className="detailMenu">
           <div className="DetailTitle">

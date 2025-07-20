@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
+import Head from 'next/head';
+
 
 
 
@@ -189,6 +191,11 @@ fetch(urlWhatsApp)
 
   return (
     <div className="Order">
+      <Head>
+        <title>Passer commande – YATTE</title>
+        <meta name="description" content="Finalisez votre commande sur YATTE. Livraison à Abidjan et paiement mobile disponibles." />
+      </Head>
+
       <div className="OrderHeader">
         <MoveLeft className="MoveLeft" onClick={gocart} />
         <p>Passer votre commande</p>

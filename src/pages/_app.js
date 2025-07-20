@@ -48,6 +48,7 @@ export default function App({ Component, pageProps }) {
       <meta charSet="utf-8" />
     </Head>
 
+
     <CartProvider>
     <ModalProvider>
     <AuthProvider>

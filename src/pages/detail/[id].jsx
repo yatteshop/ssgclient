@@ -12,6 +12,8 @@ import { useCart } from "@/contextes/CartContext";
 import { useAuth } from "@/contextes/AuthContext";
 import { useCategoryStore } from "@/stores/Store";
 import { useModal } from "@/contextes/ModalContext";
+import Head from 'next/head';
+
 
 
 function formatAmountWithSeparators(amount) {
@@ -104,6 +106,12 @@ export default function Detail({ produitId, produit, categories }) {
 
   return (
     <>
+      <Head>
+        <title>{produit.name} – YATTE</title>
+        <meta name="description" content={`Achetez ${produit.name} au meilleur prix sur YATTE. Livraison rapide, qualité garantie.`} />
+        <link rel="canonical" href={`https://yatteshop.netlify.app/detail/${produit.id}`} />
+      </Head>
+
       <div className="detailMenu">
         <div className="DetailTitle">
           <Burger displayMenu={() => setShowMenu(!showMenu)} />

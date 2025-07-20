@@ -13,6 +13,8 @@ import {
 import { useRouter } from "next/router";
 import { useCart } from "@/contextes/CartContext";
 import { useAuth } from "@/contextes/AuthContext";
+import Head from 'next/head';
+
 
 
 function lepoint(amount) {
@@ -132,6 +134,12 @@ export default function Client() {
 
   return (
     <div className="ClientOrder">
+      <Head>
+        <title>Espace Client – YATTE</title>
+        <meta name="description" content="Accédez à votre espace client YATTE : suivez vos commandes, gérez vos informations et profitez d’un service personnalisé." />
+        <link rel="canonical" href="https://yatteshop.netlify.app/client" />
+      </Head>
+
       {/* Menu */}
       <div className="detailMenu">
         <div className="DetailTitle">
