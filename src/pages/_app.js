@@ -41,9 +41,11 @@ export default function App({ Component, pageProps }) {
     <>
     <Head>
       <link rel="icon" href="/monlogo.png" type="image/png" />
-      <title>YATTE</title>
-      <meta name="description" content="Découvrez nos articles chez YATTE. Qualité, style et livraison rapide." />
-      <meta name="keywords" content="YATTE,boutique en ligne, Abidjan, Côte d'Ivoire" />
+      <title>YATTE – Boutique en ligne Côte d’Ivoire</title>
+        <meta
+          name="description"
+          content="YATTE Côte d’Ivoire : un vaste catalogue (mode, high-tech, accessoires…) à prix promo ! Commandez en ligne, profitez d’offres jusqu’à -40 % et livraisons express."
+        />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta charSet="utf-8" />
     </Head>
