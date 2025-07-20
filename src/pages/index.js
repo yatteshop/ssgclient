@@ -59,6 +59,7 @@ export default function Accueil({ produits, categories }) {
            content="Qualité et prix imbattables sur nos électroménagers. Super Deals jusqu’à -40%. Large choix de TV dernière génération et plus encore."
         />
        <meta name="robots" content="index, follow" />
+       <meta name="google-site-verification" content="HNNW2yZuf8plawr_kpuLSdi1PBeJAEkzayLcGCe4xgk" />
         <link rel="canonical" href="https://yatteshop.netlify.app/" />
       </Head>
       
