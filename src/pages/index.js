@@ -53,7 +53,7 @@ export default function Accueil({ produits, categories }) {
   return (
     <div className="Accueil">
       <Head>
-       <title>YATTE – CÔTE D'IVOIRE  Électronique & Multimédia</title>
+       <title>YATTE – Électroménagers à prix imbattables</title>
         <meta
            name="description"
            content="Qualité et prix imbattables sur nos électroménagers. Super Deals jusqu’à -40%. Large choix de TV dernière génération et plus encore."
