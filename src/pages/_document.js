@@ -4,7 +4,6 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head >
-        <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-V6M806HRBG"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
