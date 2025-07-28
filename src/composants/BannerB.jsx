@@ -15,7 +15,6 @@ export default function BannerB(){
       </Head>
       <div className="promoA">
         <div className="promoA1s">
-          <h1>YATTE CÔTE D'IVOIRE</h1>
           Qualités et prix imbattables sur nos électromenagers
         </div>
         <div className="promoA2s">
