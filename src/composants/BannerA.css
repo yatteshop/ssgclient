@@ -103,3 +103,9 @@
   70% { transform: scale(1.1); opacity: 0.8; }
   100% { transform: scale(1); opacity: 1; }
 }
+
+@media screen and (min-width: 1024px) {
+  .BannerWrappers {
+    height: 400px;
+  }
+}

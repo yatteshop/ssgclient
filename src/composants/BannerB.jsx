@@ -4,7 +4,7 @@ export default function BannerB(){
   return(
     <div className="BannerB">
       <Head>
-       <title>YATTE</title>
+       <title>YATTE CI</title>
         <meta
            name="description"
            content="YATTE CÔTE D'IVOIRE est une boutique en ligne innovante spécialisée dans la vente de produits de qualité au meilleur prix."
