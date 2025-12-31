@@ -300,3 +300,9 @@ a span:nth-child(4) {
     transform: translateY(-100%);
   }
 }
+
+@media (min-width: 1024px) {
+  .BanArticle {
+    height: 90px;
+  }
+}
