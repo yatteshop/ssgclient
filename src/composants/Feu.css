@@ -49,3 +49,14 @@
 .CategoriePricels {
   text-transform: uppercase;
 }
+
+@media (min-width: 1024px) { /* ou 768px selon ton breakpoint */
+  .Categoriels {
+    overflow: hidden; /* plus de scroll */
+  }
+
+  /* pour webkit (Chrome, Safari) */
+  .Categoriels::-webkit-scrollbar {
+    display: none;
+  }
+}
