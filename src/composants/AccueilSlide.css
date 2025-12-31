@@ -69,3 +69,9 @@
     transform: translateX(80%);
   }
 }
+
+@media (min-width: 1024px) { 
+    .AccueilSlide{
+      height: 460px;
+    }
+  }
