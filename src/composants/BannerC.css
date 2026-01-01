@@ -85,5 +85,6 @@
 @media screen and (min-width: 1024px) {
   .BannerC {
     height: 360px;
+    width: 60%;
   }
 }

@@ -70,8 +70,71 @@
   }
 }
 
+
+@keyframes litSlide {
+  0%{
+    transform: translateX(60%);
+  }
+  6.25%{
+    transform: translateX(60%);
+  }
+  12.5% {
+    transform: translateX(0);
+  }
+  18.75%{
+    transform: translateX(0);
+  }
+  25%{
+    transform: translateX(-65%);
+  }
+  31.25%{
+    transform: translateX(-65%);
+  }
+  37.5%{
+    transform: translateX(-130%);
+  }
+  43.75%{
+    transform: translateX(-130%);
+  }
+  50%{
+    transform: translateX(-190%);
+  }
+  56.25%{
+    transform: translateX(-190%);
+  }
+  62.5%{
+    transform: translateX(-130%);
+  }
+  68.75%{
+    transform: translateX(-130%);
+  }
+  75%{
+    transform: translateX(-65%);
+  }
+  81.25%{
+    transform: translateX(-65%);
+  }
+  86.5%{
+    transform: translateX(0);
+  }
+  92.75%{
+    transform: translateX(0);
+  }
+  97%{
+    transform: translateX(60%);
+  }
+  100%{
+    transform: translateX(60%);
+  }
+}
+
+
+
 @media (min-width: 1024px) { 
     .AccueilSlide{
       height: 460px;
+    }
+    .wrapperSlide {
+      animation: litSlide 50s infinite ease-in-out;
     }
   }

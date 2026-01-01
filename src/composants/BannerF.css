@@ -31,5 +31,6 @@
 @media screen and (min-width: 1024px) {
   .BannerF{
     height: 360px;
+    width: 60%;
   }
 }
