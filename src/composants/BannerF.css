@@ -25,3 +25,11 @@
 .BannerFs img {
   width: 100%;
 } 
+
+
+
+@media screen and (min-width: 1024px) {
+  .BannerF{
+    height: 360px;
+  }
+}

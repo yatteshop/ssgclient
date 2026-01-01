@@ -73,3 +73,9 @@
 
 
 
+@media screen and (min-width: 1024px) {
+  .BannerD{
+    height: 360px;
+  }
+}
+
