@@ -107,5 +107,6 @@
 @media screen and (min-width: 1024px) {
   .BannerWrappers {
     height: 360px;
+    width: 60%;
   }
 }

@@ -1,7 +1,7 @@
 
 
 export default function Footer(){
-  const year = 2025
+  const year = 2026
   return(
     <div className="Footer">
           <p className="YATTE">YATTE</p>
