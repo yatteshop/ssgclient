@@ -134,7 +134,4 @@
     .AccueilSlide{
       height: 460px;
     }
-    .wrapperSlide {
-      animation: litSlide 50s infinite ease-in-out;
-    }
   }
