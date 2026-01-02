@@ -133,5 +133,9 @@
 @media (min-width: 1024px) { 
     .AccueilSlide{
       height: 360px;
+      width: 100%;
+    }
+    .wrapperSlide {
+      animation: litSlide 50s infinite ease-in-out;
     }
   }
