@@ -79,5 +79,9 @@
     width: 80%;
     left: 205%;
   }
+  .BannerDS img {
+  width: 60%;
+  object-fit: cover;
+  }
 }
 
