@@ -50,5 +50,9 @@
   text-transform: uppercase;
 }
 
-@media (min-width: 1024px) { 
+@media (min-width: 1024px) {
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 10px;
+  }
 }
