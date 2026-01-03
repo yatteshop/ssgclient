@@ -110,4 +110,7 @@
     font-weight: 900;
     animation: bigsturn 2s infinite ease-in-out;
   }
+  .BOL img {
+    width: 75%;
+  }
 }
