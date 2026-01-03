@@ -82,7 +82,7 @@
   .BannerDS img {
   width: 40%;
   object-fit: cover;
-  position: center center;
+  object-position: center;
   }
   
   .BannerDS {
