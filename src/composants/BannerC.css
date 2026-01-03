@@ -88,4 +88,11 @@
     width: 60%;
     left: 140%;
   }
+  
+  .promoA3t {
+    width: 48px;
+    height: 48px;
+    font-size: 0.9rem;
+    font-weight: 900;
+  }
 }
