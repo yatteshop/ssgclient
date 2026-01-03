@@ -80,6 +80,20 @@
   
 }
 
+@keyframes bigsturn {
+  0%{
+    transform: translateX(0) rotate(0deg);
+  }
+  
+  50%{
+    transform: translateX(-180px) rotate(360deg);
+  }
+  100%{
+    transform: translateX(-180px) rotate(360deg);
+  }
+  
+}
+
 
 
 @media screen and (min-width: 1024px) {
@@ -94,5 +108,6 @@
     height: 48px;
     font-size: 0.9rem;
     font-weight: 900;
+    animation: bigsturn 2s infinite ease-in-out;
   }
 }
