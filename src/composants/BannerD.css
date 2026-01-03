@@ -80,8 +80,13 @@
     left: 205%;
   }
   .BannerDS img {
-  width: 60%;
+  width: 50%;
   object-fit: cover;
+  }
+  
+  .BannerDS {
+    width: 30%;
+    
   }
 }
 
