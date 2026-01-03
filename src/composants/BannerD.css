@@ -71,6 +71,21 @@
   }
 }
 
+@keyframes rouyerbig {
+  0%{
+    transform: translateY(0) rotate(0deg);
+  }
+  10%{
+    transform: translateY(340px) rotate(360deg);
+  }
+  90%{
+    transform: translateY(340px) rotate(360deg);
+  }
+  100%{
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
 
 
 @media screen and (min-width: 1024px) {
@@ -80,14 +95,21 @@
     left: 205%;
   }
   .BannerDS img {
-  width: 70%;
+  width: 60%;
   object-fit: cover;
   object-position: center;
   }
   
   .BannerDS {
     width: 40%;
-    
+  }
+  
+  .promoA3N {
+    width: 48px;
+    height: 48px;
+    font-size: 0.9rem;
+    font-weight: 900;
+    animation: rouyerbig 3s infinite ease-in-out;
   }
 }
 
