@@ -247,5 +247,11 @@
   }
 }
 
+@media screen and (min-width: 1024px){
+  .pub {
+    height: 100px;
+  }
+}
+
 
 
