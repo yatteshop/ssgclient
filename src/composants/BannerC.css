@@ -86,10 +86,10 @@
   }
   
   50%{
-    transform: translateX(-180px) rotate(360deg);
+    transform: translateX(-280px) rotate(360deg);
   }
   100%{
-    transform: translateX(-180px) rotate(360deg);
+    transform: translateX(-280px) rotate(360deg);
   }
   
 }
