@@ -251,6 +251,12 @@
   .pub {
     height: 100px;
   }
+  .pubA {
+    width: 40%;
+  }
+  .pubB {
+    width: 60%;
+  }
   
 }
 
