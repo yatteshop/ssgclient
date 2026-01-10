@@ -248,15 +248,7 @@
 }
 
 @media screen and (min-width: 1024px){
-  .pub {
-    height: 100px;
-  }
-  .pubA {
-    width: 50%;
-  }
-  .pubB {
-    width: 50%;
-  }
+  
   
 }
 
