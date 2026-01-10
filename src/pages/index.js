@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic"
 const Menu = dynamic(() => import('@/composants/Menu'), { ssr: false })
+import BigMenu from "@/composants/BigMenu";
 
 import DecathlonBanner from "@/composants/DecathlonBanner";
 import AccueilSlide from "@/composants/AccueilSlide";
@@ -67,6 +68,7 @@ export default function Accueil({ produits, categories }) {
       
       <DecathlonBanner />
       <Menu categories={categories} />
+      <BigMenu />
       {showModal ? <Modal /> : null}
       <AccueilSlide />
       <Categorie categories={categories} />
