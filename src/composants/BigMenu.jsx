@@ -7,10 +7,13 @@ export default function BigMenu (){
         YATTE
         <ShoppingBasket />
       </div>
-      <form>
+      <div className="bigSearch">
+        <form>
         <input type="search" placeholder="Cherchez un produit, une marque ou une categorie" />
         <button>Rechercher</button>
-      </form>
+        </form>
+      </div>
+      
       <div className="bigConnect">
         <User />
         <div>Se connecter</div>
