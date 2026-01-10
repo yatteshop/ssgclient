@@ -29,3 +29,10 @@
   position: absolute;
   left: 15px;
 }
+
+
+@media (min-width: 1024px) {
+  .Search {
+    display: none;
+  }
+}
