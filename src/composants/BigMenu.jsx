@@ -1,6 +1,6 @@
 import { User, ShoppingCart, Search, ShoppingBasket } from 'lucide-react';
 
-export default BigMenu (){
+export default function BigMenu (){
   return(
     <div className="BigMenu">
       <div className ="BigMenuNom">
