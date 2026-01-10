@@ -25,6 +25,7 @@ import "@/composants/Cart.css"
 import '@/composants/Client.css'
 import '@/composants/Order.css'
 import '@/composants/Notif.css'
+import '@/composants/BigMenu.css'
 
 import { ModalProvider } from "@/contextes/ModalContext";
 import { AuthProvider } from "@/contextes/AuthContext"

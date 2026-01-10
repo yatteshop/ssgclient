@@ -186,6 +186,9 @@
   .Menu {
     display: none;
   }
+  .fmenu {
+    display: none;
+  }
 }
 
 
