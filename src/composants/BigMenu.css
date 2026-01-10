@@ -1,5 +1,6 @@
 .BigMenu {
   width: 100%;
+  display: flex;
 }
 
 
