@@ -182,7 +182,11 @@
 
 
 
-
+@media (min-width: 1024px) {
+  .Menu {
+    display: none;
+  }
+}
 
 
 
