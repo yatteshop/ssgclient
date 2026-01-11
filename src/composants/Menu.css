@@ -189,7 +189,7 @@
   .fmenu {
     display: none;
   }
-  .authMenu button {
+  .MenuContainer {
     display: none;
   }
 }
