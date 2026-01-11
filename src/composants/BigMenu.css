@@ -1,13 +1,13 @@
 .BigMenu {
   width: 100%;
+  height: 75px;
   position: relatuve;
   top: 0;
   left: 0;
-  background: white;
+  background: blue;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: auto;
 }
 .bigSearch {
   width: 600px;
