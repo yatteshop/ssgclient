@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: blue;
+  height: auto;
 }
 .bigSearch {
   width: 600px;
@@ -20,6 +20,7 @@
   width: 450px;
   height: 40px;
   text-align: center;
+  margin-right: 6px;
 }
 
 
