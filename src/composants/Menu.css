@@ -189,6 +189,9 @@
   .fmenu {
     display: none;
   }
+  .authMenu button {
+    display: none;
+  }
 }
 
 
