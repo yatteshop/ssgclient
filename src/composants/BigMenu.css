@@ -23,7 +23,8 @@
   padding: auto auto;
   margin-right: 6px;
 }
-button {
+
+.bigSearch form input button {
   height: 40px;
   padding: auto auto;
 }
