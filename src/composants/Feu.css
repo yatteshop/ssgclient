@@ -52,7 +52,6 @@
 
 @media (min-width: 1024px) {
   ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 6px;
   }
 }
