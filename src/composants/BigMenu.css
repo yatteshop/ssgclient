@@ -9,6 +9,14 @@
   justify-content: center;
   align-items: center;
 }
+
+.BigMenuNom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
 .bigSearch {
   width: 600px;
 }
