@@ -5,8 +5,14 @@
   align-items: center;
 }
 .bigSearch {
-  background: blue;
-  width: 800px;
+  width: 600px;
+}
+.bigSearch form {
+  width: 580px;
+}
+
+.bigSearch form input {
+  width: 450px;
 }
 
 
