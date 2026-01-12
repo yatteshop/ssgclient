@@ -14,7 +14,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 180px;
 }
 
 
@@ -37,6 +36,19 @@
   height: 40px;
   padding: 5px;
 }
+
+.bigConnect {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bigCart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 
 @media screen and (max-width: 1023px) {
